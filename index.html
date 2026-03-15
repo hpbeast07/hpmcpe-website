@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HPMCPE Network</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+<h1>HPMCPE Network</h1>
+<p>Minecraft Java + Bedrock Server</p>
+
+<button onclick="copyIP()">Copy Server IP</button>
+</header>
+
+<section class="status">
+
+<h2>Server Status</h2>
+
+<p>Status: <span id="status">Checking...</span></p>
+
+<p>Players: <span id="players">0</span></p>
+
+</section>
+
+<section class="vote">
+
+<h2>Vote For Rewards</h2>
+
+<div class="cards">
+
+<a href="https://minecraft-mp.com" class="card">Vote Site 1</a>
+
+<a href="https://topg.org" class="card">Vote Site 2</a>
+
+<a href="https://minecraftservers.org" class="card">Vote Site 3</a>
+
+</div>
+
+</section>
+
+<section class="store">
+
+<h2>Server Store</h2>
+
+<p>Support the server and get ranks, keys and perks.</p>
+
+<a class="storebtn" href="https://store.hpmcpe.in">Open Store</a>
+
+</section>
+
+<section class="discord">
+
+<h2>Join Our Discord</h2>
+
+<a class="discordbtn" href="https://discord.gg/p7FzdhWF">Join Discord</a>
+
+</section>
+
+<footer>
+
+<p>© 2026 HPMCPE Network</p>
+
+</footer>
+
+<a class="supportbtn" href="mailto:hpbeast2007@gmail.com?subject=Minecraft Server Support">
+📧 Support
+</a>
+
+<script>
+
+function copyIP(){
+
+navigator.clipboard.writeText("play.hpmcpe.in");
+
+alert("Server IP Copied!");
+
+}
+
+fetch("https://api.mcsrvstat.us/2/play.hpmcpe.in")
+
+.then(res => res.json())
+
+.then(data => {
+
+if(data.online){
+
+document.getElementById("status").innerText="🟢 Online";
+
+document.getElementById("players").innerText=
+data.players.online+" / "+data.players.max;
+
+}
+
+else{
+
+document.getElementById("status").innerText="🔴 Offline";
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
