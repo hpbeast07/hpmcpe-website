@@ -175,3 +175,60 @@ transform:scale(1.08);
 box-shadow:0 0 15px rgba(239,68,68,0.8);
 
 }
+
+/* MOBILE FRIENDLY */
+
+@media (max-width:768px){
+
+body{
+background-attachment:scroll;
+}
+
+header{
+padding:80px 15px;
+}
+
+h1{
+font-size:28px;
+}
+
+.cards{
+flex-direction:column;
+align-items:center;
+gap:20px;
+}
+
+.card{
+width:90%;
+text-align:center;
+padding:20px;
+}
+
+.status{
+padding:40px 15px;
+}
+
+.vote{
+padding:60px 15px;
+}
+
+.store{
+padding:40px 15px;
+}
+
+.discord{
+padding:60px 15px;
+}
+
+.support{
+padding:40px 15px;
+}
+
+button,
+.storebtn,
+.discordbtn{
+width:80%;
+margin-top:15px;
+}
+
+}
