@@ -81,28 +81,27 @@ alert("Server IP Copied!");
 
 }
 
-fetch("https://api.mcsrvstat.us/2/after-citations.gl.joinmc.link")
-
-.then(res => res.json())
-
-.then(data => {
-
-if(data.online){
-
-document.getElementById("status").innerText="🟢 Online";
-
-document.getElementById("players").innerText=
-data.players.online+" / "+data.players.max;
-
+function checkServerStatus() {
+  fetch("https://api.mcsrvstat.us/2/after-citations.gl.joinmc.link")
+    .then(res => res.json())
+    .then(data => {
+      if(data.online){
+        document.getElementById("status").innerText="🟢 Online";
+        document.getElementById("players").innerText=data.players.online+" / "+data.players.max;
+      } else {
+        document.getElementById("status").innerText="🔴 Offline";
+        document.getElementById("players").innerText="0 / 0";
+      }
+    })
+    .catch(err => {
+      document.getElementById("status").innerText="❓ Status Unavailable";
+      document.getElementById("players").innerText="Unable to load";
+      console.error("Status check error:", err);
+    });
 }
 
-else{
-
-document.getElementById("status").innerText="🔴 Offline";
-
-}
-
-});
+checkServerStatus();
+setInterval(checkServerStatus, 30000);
 
 </script>
 
