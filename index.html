@@ -1,109 +1,144 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>HPMCPE Network</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HPmcpe – Survival Minecraft Server</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
 
-<header>
-<h1>HPMCPE Network</h1>
-<p>Minecraft Java + Bedrock Server</p>
+<!-- ════ LOGIN SCREEN ════ -->
+<div id="screen-login">
+  <div class="login-bg"></div>
+  <div class="login-center">
+    <div class="server-name">HPmcpe</div>
+    <div class="server-sub">Survival &middot; Vanilla &middot; Java &amp; Bedrock</div>
 
-<button onclick="copyIP()">Copy Server IP</button>
-</header>
+    <div class="glass-card">
+      <div style="text-align:center">
+        <div class="status-pill"><span class="s-dot"></span>Server Online</div>
+      </div>
 
-<section class="status">
+      <div class="skin-row" id="skinRow">
+        <div class="skin-av" id="skinAv">🧑</div>
+        <div>
+          <div class="skin-nm" id="skinNm">Who are you?</div>
+          <div class="skin-st" id="skinSt">Enter your IGN below</div>
+        </div>
+      </div>
 
-<h2>Server Status</h2>
+      <label class="lbl">IN-GAME NAME (IGN)</label>
+      <input class="inp" type="text" id="ignInput" placeholder="e.g. Steve_2024"
+        maxlength="16" oninput="onIgn(this.value)" autocomplete="username" />
 
-<p>Status: <span id="status">Checking...</span></p>
+      <label class="lbl">PASSWORD</label>
+      <input class="inp" type="password" id="passInput" placeholder="Your password"
+        onkeydown="if(event.key==='Enter')doLogin()" autocomplete="current-password" />
 
-<p>Players: <span id="players">0</span></p>
+      <div class="reg-hint" id="regHint"></div>
 
-</section>
+      <button class="enter-btn" id="enterBtn" onclick="doLogin()">&#9654; ENTER WORLD</button>
+      <div class="login-msg" id="loginMsg"></div>
 
-<section class="vote">
-
-<h2>Vote For Rewards</h2>
-
-<div class="cards">
-
-<a href="https://minecraft-mp.com" class="card">Vote Site 1</a>
-
-<a href="https://topg.org" class="card">Vote Site 2</a>
-
-<a href="https://minecraftservers.org" class="card">Vote Site 3</a>
-
+      <div class="or-div">or</div>
+      <button class="guest-btn" onclick="guestLogin()">Explore as Guest</button>
+    </div>
+  </div>
 </div>
 
-</section>
+<!-- ════ MAIN SCREEN ════ -->
+<div id="screen-main">
+  <nav class="main-nav">
+    <div class="nav-logo">HPmcpe</div>
+    <div class="nav-right">
+      <a href="#features">Features</a>
+      <a href="#join">Join</a>
+      <a href="#rules">Rules</a>
+      <div class="nav-ign"><span class="nav-dot"></span><span id="navIgn">Player</span></div>
+    </div>
+  </nav>
 
-<section class="store">
+  <div class="main-hero">
+    <div class="main-hero-bg" id="heroBg"></div>
+    <div class="main-hero-ov"></div>
+    <div class="main-hero-content">
+      <div class="hw" id="heroWelcome">Welcome back, Player</div>
+      <h1 class="hb">Your next adventure<br><span>starts here</span></h1>
+      <p class="hd">A pure survival experience — no pay-to-win, no mods. Just you, the wilderness, and a community of real adventurers.</p>
+      <div class="ip-pill" onclick="copyIP(this)">
+        <span class="ipl">after-citations.gl.joinmc.link</span>
+        <span class="ipc">&#128203; Copy IP</span>
+        <div class="ip-tip">Copied!</div>
+      </div>
+    </div>
+  </div>
 
-<h2>Server Store</h2>
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div><span class="sv" id="onlineCnt">—</span><span class="sl">Players Online</span></div>
+      <div><span class="sv">24/7</span><span class="sl">Uptime</span></div>
+      <div><span class="sv">Free</span><span class="sl">To Play</span></div>
+      <div><span class="sv">Java+PE</span><span class="sl">Compatible</span></div>
+    </div>
+  </div>
 
-<p>Support the server and get ranks, keys and perks.</p>
+  <!-- FEATURES -->
+  <div class="section" id="features">
+    <div class="sec-tag">What We Offer</div>
+    <div class="sec-title">Server Features</div>
+    <div class="feat-grid">
+      <div class="feat-card"><div class="feat-icon">&#128506;</div><h3>Vast World</h3><p>Explore an endless survival world with untouched biomes. Every direction holds a new adventure.</p></div>
+      <div class="feat-card"><div class="feat-icon">&#127968;</div><h3>Land Claims</h3><p>Protect your builds instantly. Our simple claim system keeps griefers away from your creations.</p></div>
+      <div class="feat-card"><div class="feat-icon">&#129309;</div><h3>Friendly Community</h3><p>Active, welcoming players who help newcomers and run regular in-game events for everyone.</p></div>
+      <div class="feat-card"><div class="feat-icon">&#128722;</div><h3>Player Economy</h3><p>Set up shops, trade items, and grow a thriving in-game economy with your fellow survivors.</p></div>
+      <div class="feat-card"><div class="feat-icon">&#9889;</div><h3>Low Latency</h3><p>High-performance hardware ensures smooth, lag-free gameplay wherever you play from.</p></div>
+      <div class="feat-card"><div class="feat-icon">&#127881;</div><h3>Weekly Events</h3><p>Building contests, PvP tournaments, and drop parties keep things exciting all year round.</p></div>
+    </div>
+  </div>
 
-<a class="storebtn" href="https://store.hpmcpe.in">Open Store</a>
+  <div class="divider"></div>
 
-</section>
+  <!-- HOW TO JOIN -->
+  <div class="section" id="join">
+    <div class="sec-tag">Getting Started</div>
+    <div class="sec-title">How to Join</div>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-n">01</div><h3>Get Minecraft</h3><p>Get Minecraft Java or Bedrock (MCPE) from the official Minecraft website.</p></div>
+      <div class="step-card">
+        <div class="step-n">02</div><h3>Add Server IP</h3>
+        <p>Go to Multiplayer &rarr; Add Server and paste the IP.</p>
+        <div class="mini-ip" onclick="miniCopy(this)">&#128203; after-citations.gl.joinmc.link</div>
+      </div>
+      <div class="step-card"><div class="step-n">03</div><h3>Register In-Game</h3><p>First time? Type <strong>/register &lt;password&gt;</strong> at spawn to set up your account.</p></div>
+      <div class="step-card"><div class="step-n">04</div><h3>Start Surviving!</h3><p>Read the welcome board, grab starter gear, and begin your HPmcpe adventure!</p></div>
+    </div>
+  </div>
 
-<section class="discord">
+  <div class="divider"></div>
 
-<h2>Join Our Discord</h2>
+  <!-- RULES -->
+  <div class="section" id="rules">
+    <div class="sec-tag">Community Guidelines</div>
+    <div class="sec-title">Server Rules</div>
+    <div class="rules-grid">
+      <div class="rule-item"><div class="rule-n">01</div><p><strong>No Griefing.</strong> Do not destroy or modify other players' builds without permission.</p></div>
+      <div class="rule-item"><div class="rule-n">02</div><p><strong>Respect Everyone.</strong> No harassment, hate speech, racism, or bullying of any kind.</p></div>
+      <div class="rule-item"><div class="rule-n">03</div><p><strong>No Hacking.</strong> Hacked clients, X-ray, auto-clickers — strictly forbidden.</p></div>
+      <div class="rule-item"><div class="rule-n">04</div><p><strong>No Spamming.</strong> Don't flood chat or advertise other servers in any channel.</p></div>
+      <div class="rule-item"><div class="rule-n">05</div><p><strong>No Scamming.</strong> All trades must be honoured. Tricking players results in a permanent ban.</p></div>
+      <div class="rule-item"><div class="rule-n">06</div><p><strong>Listen to Staff.</strong> Moderators' decisions are final. Raise disputes through proper channels.</p></div>
+    </div>
+  </div>
 
-<a class="discordbtn" href="https://discord.gg/p7FzdhWF">Join Discord</a>
+  <footer>
+    <div class="f-logo">HPmcpe</div>
+    <p>after-citations.gl.joinmc.link &middot; Survival Minecraft</p>
+    <p style="font-size:12px;margin-top:.4rem">Not affiliated with Mojang Studios.</p>
+  </footer>
+</div>
 
-</section>
-
-<footer>
-
-<p>© 2026 HPMCPE Network</p>
-
-</footer>
-
-<a class="supportbtn" href="mailto:hpbeast2007@gmail.com?subject=Minecraft Server Support">
-📧 Support
-</a>
-
-<script>
-
-function copyIP(){
-
-navigator.clipboard.writeText("play.hpmcpe.in");
-
-alert("Server IP Copied!");
-
-}
-
-function checkServerStatus() {
-  fetch("https://api.mcsrvstat.us/2/after-citations.gl.joinmc.link")
-    .then(res => res.json())
-    .then(data => {
-      if(data.online){
-        document.getElementById("status").innerText="🟢 Online";
-        document.getElementById("players").innerText=data.players.online+" / "+data.players.max;
-      } else {
-        document.getElementById("status").innerText="🔴 Offline";
-        document.getElementById("players").innerText="0 / 0";
-      }
-    })
-    .catch(err => {
-      document.getElementById("status").innerText="❓ Status Unavailable";
-      document.getElementById("players").innerText="Unable to load";
-      console.error("Status check error:", err);
-    });
-}
-
-checkServerStatus();
-setInterval(checkServerStatus, 30000);
-
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
