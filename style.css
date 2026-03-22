@@ -33,7 +33,8 @@ body { font-family: 'Outfit', sans-serif; color: var(--text); overflow: hidden; 
    ════════════════════════════════════════ */
 .login-bg {
   position: absolute; inset: 0;
-  background: url('bg.jpg') center / cover no-repeat;
+  /* ✅ FIX 1: bg.jpg → images/bg.jpg */
+  background: url('images/bg.jpg') center / cover no-repeat;
 }
 .login-bg::after {
   content: ''; position: absolute; inset: 0;
@@ -206,7 +207,8 @@ body { font-family: 'Outfit', sans-serif; color: var(--text); overflow: hidden; 
 .main-hero { position: relative; height: 65vh; min-height: 380px; overflow: hidden; }
 .main-hero-bg {
   position: absolute; inset: 0;
-  background: url('bg.jpg') center / cover no-repeat;
+  /* ✅ FIX 1: bg.jpg → images/bg.jpg */
+  background: url('images/bg.jpg') center / cover no-repeat;
   transform: scale(1.06); transition: transform 8s ease-out;
 }
 .main-hero-bg.zoomed { transform: scale(1); }

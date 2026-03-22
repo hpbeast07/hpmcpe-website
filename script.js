@@ -14,20 +14,19 @@ function savePlayers(obj) {
   localStorage.setItem(STORE_KEY, JSON.stringify(obj));
 }
 
-// Simple djb2 hash — keeps passwords off plain text
-function hashPass(str) {
-  let h = 5381;
-  for (let i = 0; i < str.length; i++) {
-    h = ((h << 5) + h) ^ str.charCodeAt(i);
-    h = h >>> 0;
-  }
-  return h.toString(16);
+// ✅ FIX 3: SHA-256 via Web Crypto API — much stronger than djb2
+async function hashPass(str) {
+  const buf  = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
 // ── IGN INPUT ──
 const emojis = ['🧑','👦','👧','🧔','🧑‍🦱','🧑‍🦰','🧑‍🦳','🧒'];
 
-function onIgn(val) {
+function onIgn(raw) {
+  // ✅ FIX 2: trim() added so spaces don't cause false "new player" detection
+  const val  = raw.trim();
+
   const row  = document.getElementById('skinRow');
   const av   = document.getElementById('skinAv');
   const nm   = document.getElementById('skinNm');
@@ -67,7 +66,7 @@ function onIgn(val) {
 }
 
 // ── LOGIN / REGISTER ──
-function doLogin() {
+async function doLogin() {
   const ign  = document.getElementById('ignInput').value.trim();
   const pass = document.getElementById('passInput').value;
   const btn  = document.getElementById('enterBtn');
@@ -79,11 +78,12 @@ function doLogin() {
   btn.textContent = '⏳ Loading world...';
   setMsg('', '');
 
-  setTimeout(() => {
-    const players = getPlayers();
-    const key     = ign.toLowerCase();
-    const hashed  = hashPass(pass);
+  // ✅ FIX 3: await SHA-256 hash before comparing
+  const hashed  = await hashPass(pass);
+  const players = getPlayers();
+  const key     = ign.toLowerCase();
 
+  setTimeout(() => {
     if (players[key]) {
       // Returning player — verify password
       if (players[key].password === hashed) {
@@ -115,7 +115,6 @@ function doLogout() {
   const login = document.getElementById('screen-login');
   const heroBg = document.getElementById('heroBg');
 
-  // Fade out main screen
   main.classList.remove('in');
   heroBg.classList.remove('zoomed');
 
@@ -123,17 +122,15 @@ function doLogout() {
     main.style.zIndex = '5';
     login.classList.remove('out');
 
-    // Reset login form
-    document.getElementById('ignInput').value  = '';
-    document.getElementById('passInput').value = '';
+    document.getElementById('ignInput').value       = '';
+    document.getElementById('passInput').value      = '';
     document.getElementById('enterBtn').disabled    = false;
     document.getElementById('enterBtn').textContent = '▶ ENTER WORLD';
     setMsg('', '');
 
-    // Reset skin row
-    document.getElementById('skinAv').textContent = '🧑';
-    document.getElementById('skinNm').textContent = 'Who are you?';
-    document.getElementById('skinSt').textContent = 'Enter your IGN below';
+    document.getElementById('skinAv').textContent  = '🧑';
+    document.getElementById('skinNm').textContent  = 'Who are you?';
+    document.getElementById('skinSt').textContent  = 'Enter your IGN below';
     document.getElementById('regHint').textContent = '';
     document.getElementById('regHint').className   = 'reg-hint';
     document.getElementById('skinRow').classList.remove('lit');
