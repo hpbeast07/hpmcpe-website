@@ -109,8 +109,35 @@ function doLogin() {
   }, 1000);
 }
 
-function guestLogin() {
-  enterMain('Guest_' + Math.floor(Math.random() * 9999), false);
+// ── LOGOUT ──
+function doLogout() {
+  const main  = document.getElementById('screen-main');
+  const login = document.getElementById('screen-login');
+  const heroBg = document.getElementById('heroBg');
+
+  // Fade out main screen
+  main.classList.remove('in');
+  heroBg.classList.remove('zoomed');
+
+  setTimeout(() => {
+    main.style.zIndex = '5';
+    login.classList.remove('out');
+
+    // Reset login form
+    document.getElementById('ignInput').value  = '';
+    document.getElementById('passInput').value = '';
+    document.getElementById('enterBtn').disabled    = false;
+    document.getElementById('enterBtn').textContent = '▶ ENTER WORLD';
+    setMsg('', '');
+
+    // Reset skin row
+    document.getElementById('skinAv').textContent = '🧑';
+    document.getElementById('skinNm').textContent = 'Who are you?';
+    document.getElementById('skinSt').textContent = 'Enter your IGN below';
+    document.getElementById('regHint').textContent = '';
+    document.getElementById('regHint').className   = 'reg-hint';
+    document.getElementById('skinRow').classList.remove('lit');
+  }, 600);
 }
 
 // ── ENTER MAIN SCREEN ──

@@ -33,7 +33,7 @@ body { font-family: 'Outfit', sans-serif; color: var(--text); overflow: hidden; 
    ════════════════════════════════════════ */
 .login-bg {
   position: absolute; inset: 0;
-  background: url('images/bg.jpg') center / cover no-repeat;
+  background: url('bg.jpg') center / cover no-repeat;
 }
 .login-bg::after {
   content: ''; position: absolute; inset: 0;
@@ -161,22 +161,6 @@ body { font-family: 'Outfit', sans-serif; color: var(--text); overflow: hidden; 
 .login-msg.ok  { color: var(--green); }
 .login-msg.err { color: #f87171; }
 
-.or-div {
-  display: flex; align-items: center; gap: 10px;
-  margin: 1.1rem 0; color: rgba(255,255,255,.22); font-size: 12px;
-  font-family: 'Outfit', sans-serif; letter-spacing: 2px; text-transform: uppercase;
-}
-.or-div::before, .or-div::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,.1); }
-
-.guest-btn {
-  width: 100%; padding: 11px; background: transparent;
-  color: rgba(255,255,255,.45); border: 1px solid rgba(255,255,255,.1);
-  border-radius: 10px; cursor: pointer; font-size: 14px;
-  font-weight: 500; transition: all .2s; font-family: 'Outfit', sans-serif;
-  letter-spacing: .5px;
-}
-.guest-btn:hover { border-color: rgba(74,222,128,.35); color: #fff; background: rgba(255,255,255,.05); }
-
 /* ════════════════════════════════════════
    MAIN SCREEN
    ════════════════════════════════════════ */
@@ -191,7 +175,7 @@ body { font-family: 'Outfit', sans-serif; color: var(--text); overflow: hidden; 
   padding: 0 2rem;
 }
 .nav-logo  { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 900; color: var(--green); letter-spacing: 3px; }
-.nav-right { display: flex; align-items: center; gap: 2rem; }
+.nav-right { display: flex; align-items: center; gap: 1.5rem; }
 .nav-right a { color: var(--muted); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .2s; letter-spacing: .3px; font-family: 'Outfit', sans-serif; }
 .nav-right a:hover { color: var(--green); }
 .nav-ign {
@@ -203,11 +187,26 @@ body { font-family: 'Outfit', sans-serif; color: var(--text); overflow: hidden; 
 }
 .nav-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 1.8s infinite; }
 
+/* Logout Button */
+.logout-btn {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: .5px;
+  color: #f87171; background: rgba(248,113,113,.08);
+  border: 1px solid rgba(248,113,113,.25); border-radius: 100px;
+  padding: 5px 14px; cursor: pointer;
+  transition: all .2s;
+}
+.logout-btn:hover {
+  background: rgba(248,113,113,.18);
+  border-color: rgba(248,113,113,.55);
+  color: #fca5a5;
+}
+
 /* Hero banner */
 .main-hero { position: relative; height: 65vh; min-height: 380px; overflow: hidden; }
 .main-hero-bg {
   position: absolute; inset: 0;
-  background: url('images/bg.jpg') center / cover no-repeat;
+  background: url('bg.jpg') center / cover no-repeat;
   transform: scale(1.06); transition: transform 8s ease-out;
 }
 .main-hero-bg.zoomed { transform: scale(1); }
@@ -294,16 +293,62 @@ body { font-family: 'Outfit', sans-serif; color: var(--text); overflow: hidden; 
 .rule-item strong   { color: var(--text); font-weight: 600; }
 
 /* Footer */
-footer  { background: rgba(255,255,255,.02); border-top: 1px solid rgba(255,255,255,.06); text-align: center; padding: 2.5rem 1rem; }
+footer  { background: rgba(255,255,255,.02); border-top: 1px solid rgba(255,255,255,.06); text-align: center; padding: 2.5rem 1rem 2rem; }
 .f-logo { font-family: 'Cinzel', serif; font-size: 16px; font-weight: 900; color: var(--green); margin-bottom: .5rem; letter-spacing: 4px; }
 footer p { font-size: 13px; color: var(--muted); margin-top: .3rem; font-family: 'Outfit', sans-serif; font-weight: 300; }
+
+/* Social Buttons */
+.social-row {
+  display: flex; align-items: center; justify-content: center;
+  gap: .75rem; margin: 1.5rem 0 1rem; flex-wrap: wrap;
+}
+.social-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600;
+  text-decoration: none; border-radius: 100px; padding: 8px 18px;
+  border: 1px solid; transition: all .22s; letter-spacing: .3px;
+}
+.social-btn.discord {
+  color: #7289da; background: rgba(114,137,218,.08);
+  border-color: rgba(114,137,218,.3);
+}
+.social-btn.discord:hover {
+  background: rgba(114,137,218,.2); border-color: #7289da;
+  box-shadow: 0 0 18px rgba(114,137,218,.3);
+}
+.social-btn.instagram {
+  color: #e1306c; background: rgba(225,48,108,.08);
+  border-color: rgba(225,48,108,.3);
+}
+.social-btn.instagram:hover {
+  background: rgba(225,48,108,.2); border-color: #e1306c;
+  box-shadow: 0 0 18px rgba(225,48,108,.3);
+}
+.social-btn.youtube {
+  color: #ff0000; background: rgba(255,0,0,.08);
+  border-color: rgba(255,0,0,.25);
+}
+.social-btn.youtube:hover {
+  background: rgba(255,0,0,.18); border-color: #ff0000;
+  box-shadow: 0 0 18px rgba(255,0,0,.25);
+}
+
+/* Copyright */
+.copyright {
+  font-size: 12px !important;
+  color: rgba(148,163,184,.4) !important;
+  margin-top: .8rem !important;
+  border-top: 1px solid rgba(255,255,255,.05);
+  padding-top: .8rem;
+}
 
 /* ════════════════════════════════════════
    RESPONSIVE
    ════════════════════════════════════════ */
 @media (max-width: 600px) {
   .main-nav   { padding: 0 1rem; }
-  .nav-right  { gap: 1rem; }
+  .nav-right  { gap: .75rem; }
   .nav-right a { display: none; }
   .section    { padding: 3rem 1.25rem; }
+  .logout-btn { font-size: 11px; padding: 5px 10px; }
 }
