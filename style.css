@@ -33,7 +33,7 @@ body { font-family: 'Outfit', sans-serif; color: var(--text); overflow: hidden; 
    ════════════════════════════════════════ */
 .login-bg {
   position: absolute; inset: 0;
-  background: url('bg.jpg') center / cover no-repeat;
+  background: url('images/bg.jpg') center / cover no-repeat;
 }
 .login-bg::after {
   content: ''; position: absolute; inset: 0;
