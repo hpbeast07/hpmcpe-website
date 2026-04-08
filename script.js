@@ -256,7 +256,6 @@ function enterMain(ign, isNew) {
   document.getElementById('heroWelcome').textContent = isNew
     ? 'Welcome to HPmcpe, ' + ign + '! 🎉'
     : 'Welcome back, ' + ign + '! 👋';
-  document.getElementById('onlineCnt').textContent   = Math.floor(Math.random() * 40 + 10);
 
   document.getElementById('screen-login').classList.add('out');
 
@@ -281,14 +280,42 @@ function setMsg(t, c) {
 }
 
 function copyIP(el) {
-  navigator.clipboard.writeText('after-citations.gl.joinmc.link').catch(() => {});
+  navigator.clipboard.writeText('description-todd.gl.joinmc.link').catch(() => {});
   const tip = el.querySelector('.ip-tip');
   if (tip) { tip.style.opacity = '1'; setTimeout(() => tip.style.opacity = '0', 2000); }
 }
 
+async function updateServerStatus() {
+  const serverIP = "description-todd.gl.joinmc.link";
+
+  try {
+    const res = await fetch(`https://api.mcstatus.io/v2/status/java/${serverIP}`);
+    const data = await res.json();
+
+    const onlineText = data.online
+      ? `${data.players.online}/${data.players.max}`
+      : "Offline";
+
+    document.getElementById("onlineCnt").textContent = onlineText;
+
+    // login screen top status pill
+    const pill = document.querySelector(".status-pill");
+    if (pill) {
+      pill.innerHTML = data.online
+        ? `<span class="s-dot"></span>Server Online`
+        : `<span class="s-dot" style="background:red"></span>Server Offline`;
+    }
+  } catch (e) {
+    document.getElementById("onlineCnt").textContent = "Error";
+  }
+}
+
 function miniCopy(el) {
-  navigator.clipboard.writeText('after-citations.gl.joinmc.link').catch(() => {});
+  navigator.clipboard.writeText('description-todd.gl.joinmc.link').catch(() => {});
   const o = el.textContent;
   el.textContent = '✔ Copied!';
   setTimeout(() => el.textContent = o, 2000);
 }
+
+updateServerStatus();
+setInterval(updateServerStatus, 30000);
