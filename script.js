@@ -286,27 +286,37 @@ function copyIP(el) {
 }
 
 async function updateServerStatus() {
-  const serverIP = "description-todd.gl.joinmc.link";
+  const ip = "description-todd.gl.joinmc.link";
 
   try {
-    const res = await fetch(`https://api.mcstatus.io/v2/status/java/${serverIP}`);
-    const data = await res.json();
+    const [javaRes, bedrockRes] = await Promise.all([
+      fetch(`https://api.mcstatus.io/v2/status/java/${ip}`),
+      fetch(`https://api.mcstatus.io/v2/status/bedrock/${ip}`)
+    ]);
 
-    const onlineText = data.online
-      ? `${data.players.online}/${data.players.max}`
-      : "Offline";
+    const javaData = await javaRes.json();
+    const bedrockData = await bedrockRes.json();
 
-    document.getElementById("onlineCnt").textContent = onlineText;
+    const javaOnline = javaData.online ? (javaData.players?.online || 0) : 0;
+    const bedrockOnline = bedrockData.online ? (bedrockData.players?.online || 0) : 0;
 
-    // login screen top status pill
+    const javaMax = javaData.players?.max || 0;
+    const bedrockMax = bedrockData.players?.max || 0;
+
+    const totalOnline = javaOnline + bedrockOnline;
+    const totalMax = Math.max(javaMax, bedrockMax);
+
+    document.getElementById("onlineCnt").textContent =
+      totalOnline > 0 ? `${totalOnline}/${totalMax}` : "Offline";
+
     const pill = document.querySelector(".status-pill");
     if (pill) {
-      pill.innerHTML = data.online
-        ? `<span class="s-dot"></span>Server Online`
+      pill.innerHTML = totalOnline > 0
+        ? `<span class="s-dot"></span>${totalOnline} Players Online`
         : `<span class="s-dot" style="background:red"></span>Server Offline`;
     }
   } catch (e) {
-    document.getElementById("onlineCnt").textContent = "Error";
+    document.getElementById("onlineCnt").textContent = "Offline";
   }
 }
 
