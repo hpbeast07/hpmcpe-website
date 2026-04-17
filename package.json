@@ -1,0 +1,9 @@
+{
+  "name": "hpmcpe-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "HPmcpe website with backend-powered authentication",
+  "scripts": {
+    "start": "node server.js"
+  }
+}

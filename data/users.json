@@ -1,0 +1,18 @@
+{
+  "users": {
+    "steve_2026": {
+      "ign": "Steve_2026",
+      "email": "steve2026@example.com",
+      "passwordHash": "120000:e0de314095244d2fe64b12c4551041d1:66196f3d62f7a3b047563bb6057a177000ff846f91771e1cd079e187e067db7e5a77bdc891cbadf1db196b7244512f85c9ce2f2768a116a86caf5c6389a4941b",
+      "registered": 1776440978572,
+      "lastLogin": 1776440978572
+    },
+    "steve_6110": {
+      "ign": "Steve_6110",
+      "email": "steve6110@example.com",
+      "passwordHash": "120000:f49247758cc6f652cd178731ef2a218a:fde0cf6f72d4980987965dc7f58921e038db714932656c9083e78f08f9f4ccb91f5f4ae058e1ed19ab6333c35bd93035e84a37b170729206643b4d7567018f77",
+      "registered": 1776441019808,
+      "lastLogin": 1776441019965
+    }
+  }
+}
