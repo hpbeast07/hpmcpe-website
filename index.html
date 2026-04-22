@@ -14,8 +14,6 @@
   const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndienZuc3hveHViY3NjdHpreGNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4MjEwNzMsImV4cCI6MjA5MjM5NzA3M30.UXQOsqZg0vTtIJ_Bqqmqg-BfLomTf7PYulKXZPNZkjg";
   window.supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 </script>
-<!-- hCaptcha script -->
-<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body>
 
@@ -56,8 +54,7 @@
         <button class="pass-toggle" type="button" onclick="togglePassword('passInput', this)">Show</button>
       </div>
 
-      <!-- hCaptcha Widget -->
-      <div class="h-captcha" data-sitekey="82a83f8e-350c-40ca-856c-79e8dbbae612" data-callback="onCaptchaSuccess" style="margin-bottom: 1rem;"></div>
+      <!-- CAPTCHA removed -->
 
       <div class="reg-hint" id="regHint"></div>
       <div class="privacy-note">Your password is verified by the server and never saved in browser storage.</div>
