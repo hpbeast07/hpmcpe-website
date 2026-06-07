@@ -239,25 +239,25 @@
       </p>
     </div>
 
-    <form class="feedback-form">
+    <form id="feedbackForm" class="feedback-form"></form>
 
       <div class="feedback-grid">
         <div class="input-box">
           <label>Your Name</label>
-          <input type="text" placeholder="Enter your name">
+          <input id="fbName" type="text" placeholder="Enter your name" required>
         </div>
         <div class="input-box">
           <label>IGN (In Game Name)</label>
-          <input type="text" placeholder="Enter your IGN">
+          <input id="fbIGN" type="text" placeholder="Enter your IGN" required>
         </div>
       </div>
       <div class="input-box">
         <label>Email Address</label>
-        <input type="email" placeholder="you@example.com">
+        <input id="fbEmail" type="email" placeholder="you@example.com" required>
       </div>
       <div class="input-box">
         <label>Server Rating</label>
-        <select>
+        <select id="fbRating" required>
           <option value="">Select Rating</option>
           <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
           <option value="4">⭐⭐⭐⭐ Very Good</option>
@@ -269,7 +269,7 @@
 
       <div class="input-box">
         <label>Your Feedback</label>
-        <textarea rows="6" placeholder="Write your feedback here..."></textarea>
+        <textarea id="fbFeedback" rows="6" placeholder="Write your feedback here..." required></textarea>
       </div>
 
       <button type="submit" class="feedback-btn">
