@@ -361,3 +361,37 @@ async function updateServerStatus() {
 restoreSession();
 updateServerStatus();
 setInterval(updateServerStatus, 30000);
+
+// ==================== FEEDBACK ====================
+const feedbackForm = document.getElementById("feedbackForm");
+
+feedbackForm?.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const name = document.getElementById("fbName").value.trim();
+  const ign = document.getElementById("fbIGN").value.trim();
+  const email = document.getElementById("fbEmail").value.trim();
+  const rating = document.getElementById("fbRating").value;
+  const message = document.getElementById("fbFeedback").value.trim();
+
+  const { error } = await window.supabase
+    .from("feedback")
+    .insert([
+      {
+        name,
+        ign,
+        email,
+        rating: Number(rating),
+        message
+      }
+    ]);
+
+  if (error) {
+    console.error(error);
+    alert("Failed to submit feedback.");
+    return;
+  }
+
+  alert("Thank you for your feedback!");
+  feedbackForm.reset();
+});
