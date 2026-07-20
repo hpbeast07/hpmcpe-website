@@ -432,7 +432,7 @@ body {
 /* ════════════════════════════════════════
    FOOTER
    ════════════════════════════════════════ */
-footer  { background: rgba(255,255,255,.02); border-top: 1px solid rgba(255,255,255,.06); text-align: center; padding: 2.5rem 1rem 2rem; }
+footer  { background: rgba(255,255,255,.02); border-top: 1px solid rgba(255,255,255,.06); text-align: center; padding: 2.5rem 0rem 2rem; }
 .f-logo { font-family: 'Cinzel', serif; font-size: 16px; font-weight: 900; color: var(--green); margin-bottom: .5rem; letter-spacing: 4px; }
 footer p { font-size: 13px; color: var(--muted); margin-top: .3rem; font-family: 'Outfit', sans-serif; font-weight: 300; }
 
@@ -562,7 +562,7 @@ footer p { font-size: 13px; color: var(--muted); margin-top: .3rem; font-family:
    ════════════════════════════════════════ */
 
 .feedback-section{
-  padding: 5rem 2rem;
+  padding: 5rem 0;
   background: #0b1120;
 }
 
