@@ -17,6 +17,34 @@ function setAuthNote(text, isOnline) {
   note.textContent = text;
   note.className = "auth-note " + (isOnline ? "online" : "offline");
 }
+function skipLogin(){
+
+    document.getElementById("navIgn").textContent = "Guest";
+    document.getElementById("heroWelcome").textContent = "Welcome, Guest!";
+
+    document.getElementById("screen-login").classList.add("out");
+
+    const main = document.getElementById("screen-main");
+    main.style.zIndex = "20";
+
+    requestAnimationFrame(()=>{
+        main.classList.add("in");
+    });
+
+    // Guest Mode Save
+    localStorage.setItem("guestMode","true");
+}
+if(localStorage.getItem("guestMode")){
+    document.getElementById("loginBtn").style.display="inline-block";
+    document.querySelector(".logout-btn").style.display="none";
+}
+
+document.getElementById("loginBtn").onclick=function(){
+    localStorage.removeItem("guestMode");
+
+    document.getElementById("screen-main").classList.remove("in");
+    document.getElementById("screen-login").classList.remove("out");
+};
 
 function setButtonState(button, text, disabled) {
   button.textContent = text;

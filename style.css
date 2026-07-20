@@ -48,6 +48,31 @@ body {
     rgba(4,9,22,.68)  100%
   );
 }
+.skip-btn{
+    height:12%;
+    width:100%;
+    margin-top:12px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:rgba(255,255,255,.08);
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s ease;
+    border:1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(10px);
+}
+
+.skip-btn:hover{
+    background:rgba(255,255,255,.15);
+    transform:translateY(-2px);
+}
+
+.skip-btn:active{
+    transform:scale(.98);
+}
 .login-center {
   position: absolute; inset: 0; z-index: 2;
   display: flex; flex-direction: column;
@@ -190,9 +215,8 @@ body {
   min-height: 16px; transition: color .2s;
 }
 .reg-hint.new    { color: rgba(74,222,128,.7); }
-.reg-hint.exists { color: rgba(148,163,184,.7); }
 .privacy-note {
-  margin: -.2rem 0 1rem;
+  margin: 10px;
   text-align: center;
   font-size: 11px;
   line-height: 1.6;
