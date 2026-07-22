@@ -19,20 +19,18 @@
 
 <!-- ================= NAVBAR ================= -->
 
-<nav class="navbar">
-
-    <div class="logo">
-        <span>HPmcpe</span>
+<nav class="main-nav">
+    <div class="nav-logo">HPmcpe</div>
+    <div class="nav-right">
+      <a href="index.html?home=1">Home</a>
+      <a href="#products">Ranks</a>
+      <a href="#orbs">Orbs</a>
+      <a href="#cratekeys">Crate Keys</a>
+      <div class="nav-ign"><span class="nav-dot"></span><span id="navIgn">Player</span></div>
+      <button class="logout-btn" onclick="doLogout()">Logout</button>
+      <button id="loginBtn" class="logout-btn" style="display:none;">Login</button>
     </div>
-
-    <div class="links">
-        <a href="index.html">Home</a>
-        <a href="store.html" class="active">Store</a>
-        <a href="index.html#rules">Rules</a>
-        <a href="index.html#feedback">Feedback</a>
-    </div>
-
-</nav>
+  </nav>
 
 <!-- ================= HERO ================= -->
 
@@ -58,241 +56,156 @@
 <!-- ================= PRODUCTS ================= -->
 
 <section id="products">
-
 <h2 class="title">Featured Ranks</h2>
-
 <div class="grid">
 <div class="card">
-
 <h3>⭐ Aspect</h3>
-
 <p class="price">
 ₹99
 </p>
-
 <ul>
-
 <li>VIP Prefix</li>
-
 <li>3 Extra Homes</li>
-
 <li>100 Orbs</li>
-
 <li>100k Cash</li>
-
 <li>2000 Claim Blocks</li>
-
 </ul>
-
 <a href="#" class="buy">
-
 Buy Now
 </a>
-
 </div>
 
 <!-- MVP -->
 
 <div class="card best">
-
 <div class="badge">
 Best Seller
 </div>
-
 <h3>💎 Origin</h3>
-
 <p class="price">
 ₹199
 </p>
-
 <ul>
-
 <li>Everything in Aspect</li>
-
 <li>5 Homes</li>
-
 <li>Extra Cosmetics</li>
-
 <li>200 Orbs</li>
-
 <li>4000 Claim Blocks</li>
-
 </ul>
-
 <a href="#" class="buy">
 Buy Now
 </a>
-
 </div>
 
 <!-- Adept -->
 
 <div class="card">
-
 <h3>👑 Adept</h3>
-
 <p class="price">
 ₹299
 </p>
-
 <ul>
-
 <li>Everything in Origin</li>
-
 <li>Auction Listing</li>
-
 <li>Exclusive Prefix</li>
-
 <li>Pets</li>
-
 <li>Advanced Crate Key 2</li>
-
 </ul>
-
 <a href="#" class="buy">
 Buy Now
 </a>
-
 </div>
 
 <!-- Prime -->
 
 <div class="card">
-
 <h3> Prime</h3>
-
 <p class="price">
 ₹399
 </p>
-
 <ul>
-
 <li>Everything in Adept</li>
-
 <li>Eternal Crate key 1</li>
-
 <li>300 orbs</li>
-
 <li>Priority Support</li>
-
 <li>10 Set Homes</li>
-
 </ul>
-
 <a href="#" class="buy">
 Buy Now
 </a>
+
 </div>
-
 <div class="card">
-
 <h3>🔥 Elite</h3>
-
 <p class="price">
 ₹599
 </p>
-
 <ul>
-
 <li>Everything Included</li>
-
 <li>Exclusive Cosmetics</li>
-
 <li>1M Cash</li>
-
 <li>Priority Support</li>
-
 <li>Limited Edition Tag</li>
-
 </ul>
-
 <a href="#" class="buy">
 Buy Now
 </a>
 </div>
-
-
-
 </section>
 
 <!-- ================= Orbs ================= -->
 
-<section>
-
+<section id="orbs">
 <h2 class="title">
-
 Orbs
-
 </h2>
-
 <div class="grid">
-
 <div class="card">
-
 <h3>
 🪙 25+5 Orbs
 </h3>
-
 <p class="price">
 ₹10
 </p>
-
 <a href="#" class="buy">
 Buy Now
 </a>
-
 </div>
-
 <div class="card">
-
 <h3>
 🪙 150+25  Orbs
 </h3>
-
 <p class="price">
 ₹49
 </p>
-
 <a href="#" class="buy">
 Buy Now
 </a>
-
 </div>
-
 <div class="card">
-
 <h3>
 🪙 250+50 Orbs
 </h3>
-
 <p class="price">
 ₹99
 </p>
-
 <a href="#" class="buy">
 Buy Now
 </a>
-
 </div>
-
 <div class="card">
-
 <h3>
 🪙 500+100 Orbs
 </h3>
-
 <p class="price">
 ₹199
 </p>
-
 <a href="#" class="buy">
 Buy Now
 </a>
-
 </div>
 
 <div class="card">
-
 <h3>
 🪙 1000+200 Orbs
 </h3>
@@ -300,15 +213,11 @@ Buy Now
 <p class="price">
 ₹499
 </p>
-
 <a href="#" class="buy">
 Buy Now
 </a>
-
 </div>
-
 <div class="card">
-
 <h3>
 🪙 1999+500 Orbs
 </h3>
@@ -316,170 +225,116 @@ Buy Now
 <p class="price">
 ₹999
 </p>
-
 <a href="#" class="buy">
 Buy Now
 </a>
-
 </div>
 
 </div>
-
 </section>
 
 <!-- ================= Crate Keys ================= -->
 
-<section>
-
+<section id="cratekeys">
 <h2 class="title">
-
 Crate Keys
-
 </h2>
-
 <div class="grid">
-
 <div class="card">
-
 <h3>
 Eternal Crate Key
 </h3>
-
 <p class="price">
 ₹29
 </p>
-
 <a href="#" class="buy">
 Buy Now
 </a>
-
 </div>
-
 <div class="card">
-
 <h3>
 Advanced Crate Key
 </h3>
-
 <p class="price">
 ₹19
 </p>
-
 <a href="#" class="buy">
 Buy Now
 </a>
-
 </div>
 
 <div class="card">
-
 <h3>
 Rare Crate Key
 </h3>
-
 <p class="price">
 ₹9
 </p>
-
 <a href="#" class="buy">
 Buy Now
 </a>
-
 </div>
-
 </div>
-
 </section>
 
 <!-- ================= WHY US ================= -->
 
 <section class="why">
-
 <h2 class="title">
-
 Why Support HPmcpe?
-
 </h2>
-
 <div class="features">
-
 <div class="feature">
-
 <i class="fa-solid fa-server"></i>
-
 <h3>Better Hosting</h3>
-
 <p>
-
 Powerful hardware with low latency
 for smooth gameplay.
-
 </p>
-
 </div>
 
 <div class="feature">
-
 <i class="fa-solid fa-bolt"></i>
-
 <h3>Weekly Updates</h3>
-
 <p>
-
 New content, fixes,
 events and exciting features.
-
 </p>
-
 </div>
-
 <div class="feature">
-
 <i class="fa-solid fa-users"></i>
-
 <h3>Community Events</h3>
-
 <p>
-
 Regular tournaments,
 giveaways and competitions.
-
 </p>
-
 </div>
-
 <div class="feature">
-
 <i class="fa-solid fa-heart"></i>
-
 <h3>Support Development</h3>
-
 <p>
-
 Every purchase helps us improve
 the server even more.
-
 </p>
-
 </div>
-
 </div>
-
 </section><br><br>
 
 <!-- ================= FOOTER ================= -->
 
 <footer>
-
 <h2 style="text-align: center;"> HPmcpe Network</h2>
-
 <p style="text-align: center;"> Premium Minecraft Experience</p>
-
 <br><br>
-
 <p class="copyright">&copy; 2026 HPmcpe - All Rights Reserved. Not affiliated with Mojang Studios.</p>
-
 </footer>
-
+<!-- Supabase Client -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = "https://wbzvnsxoxubcsctzkxcc.supabase.co";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndienZuc3hveHViY3NjdHpreGNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4MjEwNzMsImV4cCI6MjA5MjM5NzA3M30.UXQOsqZg0vTtIJ_Bqqmqg-BfLomTf7PYulKXZPNZkjg";
+  window.supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+</script>
+<script src="store.js"></script>
 </body>
 </html>

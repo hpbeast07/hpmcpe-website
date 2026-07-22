@@ -141,8 +141,18 @@ body {
   background: var(--green); animation: pulse 1.8s infinite;
 }
 @keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: .4; transform: scale(.65); }
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(74,222,128,.7);
+    }
+    70% {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 8px rgba(74,222,128,0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(74,222,128,0);
+    }
 }
 
 /* Skin preview row */

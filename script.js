@@ -423,3 +423,18 @@ feedbackForm?.addEventListener("submit", async (e) => {
   alert("Thank you for your feedback!");
   feedbackForm.reset();
 });
+
+// Agar user Store se Home par aaya hai
+const urlParams = new URLSearchParams(window.location.search);
+
+if (urlParams.get("home") === "1") {
+    const login = document.getElementById("screen-login");
+    const main = document.getElementById("screen-main");
+
+    if (login) login.classList.add("out");
+
+    if (main) {
+        main.style.zIndex = "20";
+        main.classList.add("in");
+    }
+}
