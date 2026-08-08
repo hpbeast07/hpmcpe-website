@@ -1,333 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HPmcpe Store</title>
+<link rel="icon" href=".\images\HPmcpe-logo.png" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HPmcpe Store - Ranks, Orbs & Crate Keys</title>
+<meta name="keywords" content="HPmcpe Store, Minecraft Ranks, Minecraft Server Store, HPmcpe Orbs, Crate Keys">
+<meta name="author" content="HPmcpe">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#16a34a">
+<link rel="canonical" href="https://hpmcpe.in/store.html">
 
-    <link rel="stylesheet" href="store.css">
+<meta property="og:title" content="HPmcpe Store">
+<meta property="og:description" content="Unlock Premium Ranks, Orbs, Crates, Cosmetics and Exclusive Perks on HPmcpe.">
+<meta property="og:image" content="https://hpmcpe.in/images/HPmcpe-logo.png">
+<meta property="og:url" content="https://hpmcpe.in/store.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HPmcpe Store">
+<meta name="twitter:description" content="Unlock Premium Ranks, Orbs, Crates, Cosmetics and Exclusive Perks on HPmcpe.">
+<meta name="description" content="Support HPmcpe and unlock premium ranks, orbs, crate keys and exclusive perks.">
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Cinzel:wght@600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="store.css">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
 <body>
 
 <!-- ================= NAVBAR ================= -->
-
 <nav class="main-nav">
-    <div class="nav-logo">HPmcpe</div>
-    <div class="nav-right">
-      <a href="index.html?home=1">Home</a>
-      <a href="#products">Ranks</a>
-      <a href="#orbs">Orbs</a>
-      <a href="#cratekeys">Crate Keys</a>
-      <div class="nav-ign"><span class="nav-dot"></span><span id="navIgn">Player</span></div>
-      <button class="logout-btn" onclick="doLogout()">Logout</button>
-      <button id="loginBtn" class="logout-btn" style="display:none;">Login</button>
-    </div>
-  </nav>
+  <div class="nav-logo">HPmcpe</div>
+  <div class="nav-right">
+    <a href="index.html?home=1">Home</a>
+    <a href="#products">Ranks</a>
+    <a href="#orbs">Orbs</a>
+    <a href="#cratekeys">Crate Keys</a>
+    <div class="nav-ign"><span class="nav-dot"></span><span id="navIgn">Player</span></div>
+    <button class="logout-btn" onclick="doLogout()">Logout</button>
+    <button id="loginBtn" class="logout-btn" style="display:none;">Login</button>
+  </div>
+</nav>
 
 <!-- ================= HERO ================= -->
-
-<header class="hero">
-
-    <div class="overlay">
-
-        <h1>Support HPmcpe</h1>
-
-        <p>
-            Unlock Premium Ranks, Orbs, Crates,
-            Cosmetics and Exclusive Perks
-        </p>
-
-        <a href="#products" class="cta">
-            Browse Store
-        </a>
-
-    </div>
-
+<header class="store-hero">
+  <div class="store-hero-bg"></div>
+  <div class="store-hero-ov"></div>
+  <div class="store-hero-content">
+    <div class="sh-tag">HPmcpe Store</div>
+    <h1 class="sh-title">Support HPmcpe<br><span style="color:var(--green)">Unlock More</span></h1>
+    <p class="sh-desc">Unlock premium ranks, orbs, crates, cosmetics and exclusive perks. Every purchase helps us keep the server online and growing.</p>
+    <a href="#products" class="sh-cta">Browse Store</a>
+  </div>
 </header>
 
 <!-- ================= PRODUCTS ================= -->
+<div class="section" id="products">
+  <div class="sec-tag">Ranks</div>
+  <h2 class="sec-title">Featured Ranks</h2>
+  <div class="grid">
 
-<section id="products">
-<h2 class="title">Featured Ranks</h2>
-<div class="grid">
-<div class="card">
-<h3>⭐ Aspect</h3>
-<p class="price">
-₹99
-</p>
-<ul>
-<li>VIP Prefix</li>
-<li>3 Extra Homes</li>
-<li>100 Orbs</li>
-<li>100k Cash</li>
-<li>2000 Claim Blocks</li>
-</ul>
-<a href="#" class="buy">
-Buy Now
-</a>
-</div>
+    <div class="card">
+      <h3>⭐ Aspect</h3>
+      <p class="price">₹99</p>
+      <ul>
+        <li>VIP Prefix</li>
+        <li>3 Extra Homes</li>
+        <li>100 Orbs</li>
+        <li>100k Cash</li>
+        <li>2000 Claim Blocks</li>
+      </ul>
+      <button class="buy">Buy Now</button>
+    </div>
 
-<!-- MVP -->
+    <div class="card best">
+      <div class="badge">Best Seller</div>
+      <h3>💎 Origin</h3>
+      <p class="price">₹199</p>
+      <ul>
+        <li>Everything in Aspect</li>
+        <li>5 Homes</li>
+        <li>Extra Cosmetics</li>
+        <li>200 Orbs</li>
+        <li>4000 Claim Blocks</li>
+      </ul>
+      <button class="buy">Buy Now</button>
+    </div>
 
-<div class="card best">
-<div class="badge">
-Best Seller
-</div>
-<h3>💎 Origin</h3>
-<p class="price">
-₹199
-</p>
-<ul>
-<li>Everything in Aspect</li>
-<li>5 Homes</li>
-<li>Extra Cosmetics</li>
-<li>200 Orbs</li>
-<li>4000 Claim Blocks</li>
-</ul>
-<a href="#" class="buy">
-Buy Now
-</a>
-</div>
+    <div class="card">
+      <h3>👑 Adept</h3>
+      <p class="price">₹299</p>
+      <ul>
+        <li>Everything in Origin</li>
+        <li>Auction Listing</li>
+        <li>Exclusive Prefix</li>
+        <li>Pets</li>
+        <li>Advanced Crate Key 2</li>
+      </ul>
+      <button class="buy">Buy Now</button>
+    </div>
 
-<!-- Adept -->
+    <div class="card">
+      <h3>Prime</h3>
+      <p class="price">₹399</p>
+      <ul>
+        <li>Everything in Adept</li>
+        <li>Eternal Crate Key 1</li>
+        <li>300 Orbs</li>
+        <li>Priority Support</li>
+        <li>10 Set Homes</li>
+      </ul>
+      <button class="buy">Buy Now</button>
+    </div>
 
-<div class="card">
-<h3>👑 Adept</h3>
-<p class="price">
-₹299
-</p>
-<ul>
-<li>Everything in Origin</li>
-<li>Auction Listing</li>
-<li>Exclusive Prefix</li>
-<li>Pets</li>
-<li>Advanced Crate Key 2</li>
-</ul>
-<a href="#" class="buy">
-Buy Now
-</a>
-</div>
+    <div class="card">
+      <h3>🔥 Elite</h3>
+      <p class="price">₹599</p>
+      <ul>
+        <li>Everything Included</li>
+        <li>Exclusive Cosmetics</li>
+        <li>1M Cash</li>
+        <li>Priority Support</li>
+        <li>Limited Edition Tag</li>
+      </ul>
+      <button class="buy">Buy Now</button>
+    </div>
 
-<!-- Prime -->
-
-<div class="card">
-<h3> Prime</h3>
-<p class="price">
-₹399
-</p>
-<ul>
-<li>Everything in Adept</li>
-<li>Eternal Crate key 1</li>
-<li>300 orbs</li>
-<li>Priority Support</li>
-<li>10 Set Homes</li>
-</ul>
-<a href="#" class="buy">
-Buy Now
-</a>
-
-</div>
-<div class="card">
-<h3>🔥 Elite</h3>
-<p class="price">
-₹599
-</p>
-<ul>
-<li>Everything Included</li>
-<li>Exclusive Cosmetics</li>
-<li>1M Cash</li>
-<li>Priority Support</li>
-<li>Limited Edition Tag</li>
-</ul>
-<a href="#" class="buy">
-Buy Now
-</a>
-</div>
-</section>
-
-<!-- ================= Orbs ================= -->
-
-<section id="orbs">
-<h2 class="title">
-Orbs
-</h2>
-<div class="grid">
-<div class="card">
-<h3>
-🪙 25+5 Orbs
-</h3>
-<p class="price">
-₹10
-</p>
-<a href="#" class="buy">
-Buy Now
-</a>
-</div>
-<div class="card">
-<h3>
-🪙 150+25  Orbs
-</h3>
-<p class="price">
-₹49
-</p>
-<a href="#" class="buy">
-Buy Now
-</a>
-</div>
-<div class="card">
-<h3>
-🪙 250+50 Orbs
-</h3>
-<p class="price">
-₹99
-</p>
-<a href="#" class="buy">
-Buy Now
-</a>
-</div>
-<div class="card">
-<h3>
-🪙 500+100 Orbs
-</h3>
-<p class="price">
-₹199
-</p>
-<a href="#" class="buy">
-Buy Now
-</a>
+  </div>
 </div>
 
-<div class="card">
-<h3>
-🪙 1000+200 Orbs
-</h3>
+<div class="divider"></div>
 
-<p class="price">
-₹499
-</p>
-<a href="#" class="buy">
-Buy Now
-</a>
-</div>
-<div class="card">
-<h3>
-🪙 1999+500 Orbs
-</h3>
+<!-- ================= ORBS ================= -->
+<div class="section" id="orbs">
+  <div class="sec-tag">In-Game Currency</div>
+  <h2 class="sec-title">Orbs</h2>
+  <div class="grid">
 
-<p class="price">
-₹999
-</p>
-<a href="#" class="buy">
-Buy Now
-</a>
+    <div class="card"><h3>🪙 25+5 Orbs</h3><p class="price">₹10</p><button class="buy">Buy Now</button></div>
+    <div class="card"><h3>🪙 150+25 Orbs</h3><p class="price">₹49</p><button class="buy">Buy Now</button></div>
+    <div class="card"><h3>🪙 250+50 Orbs</h3><p class="price">₹99</p><button class="buy">Buy Now</button></div>
+    <div class="card"><h3>🪙 500+100 Orbs</h3><p class="price">₹199</p><button class="buy">Buy Now</button></div>
+    <div class="card"><h3>🪙 1000+200 Orbs</h3><p class="price">₹499</p><button class="buy">Buy Now</button></div>
+    <div class="card"><h3>🪙 1999+500 Orbs</h3><p class="price">₹999</p><button class="buy">Buy Now</button></div>
+
+  </div>
 </div>
 
-</div>
-</section>
+<div class="divider"></div>
 
-<!-- ================= Crate Keys ================= -->
+<!-- ================= CRATE KEYS ================= -->
+<div class="section" id="cratekeys">
+  <div class="sec-tag">Crates</div>
+  <h2 class="sec-title">Crate Keys</h2>
+  <div class="grid">
 
-<section id="cratekeys">
-<h2 class="title">
-Crate Keys
-</h2>
-<div class="grid">
-<div class="card">
-<h3>
-Eternal Crate Key
-</h3>
-<p class="price">
-₹29
-</p>
-<a href="#" class="buy">
-Buy Now
-</a>
-</div>
-<div class="card">
-<h3>
-Advanced Crate Key
-</h3>
-<p class="price">
-₹19
-</p>
-<a href="#" class="buy">
-Buy Now
-</a>
+    <div class="card"><h3>Eternal Crate Key</h3><p class="price">₹29</p><button class="buy">Buy Now</button></div>
+    <div class="card"><h3>Advanced Crate Key</h3><p class="price">₹19</p><button class="buy">Buy Now</button></div>
+    <div class="card"><h3>Rare Crate Key</h3><p class="price">₹9</p><button class="buy">Buy Now</button></div>
+
+  </div>
 </div>
 
-<div class="card">
-<h3>
-Rare Crate Key
-</h3>
-<p class="price">
-₹9
-</p>
-<a href="#" class="buy">
-Buy Now
-</a>
-</div>
-</div>
-</section>
+<div class="divider"></div>
 
-<!-- ================= WHY US ================= -->
-
-<section class="why">
-<h2 class="title">
-Why Support HPmcpe?
-</h2>
-<div class="features">
-<div class="feature">
-<i class="fa-solid fa-server"></i>
-<h3>Better Hosting</h3>
-<p>
-Powerful hardware with low latency
-for smooth gameplay.
-</p>
+<!-- ================= WHY SUPPORT US ================= -->
+<div class="section" id="why">
+  <div class="sec-tag">Why Support</div>
+  <h2 class="sec-title">Why Support HPmcpe?</h2>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon"><i class="fa-solid fa-server"></i></div>
+      <h3>Better Hosting</h3>
+      <p>Powerful hardware with low latency for smooth gameplay.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><i class="fa-solid fa-bolt"></i></div>
+      <h3>Weekly Updates</h3>
+      <p>New content, fixes, events and exciting features.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><i class="fa-solid fa-users"></i></div>
+      <h3>Community Events</h3>
+      <p>Regular tournaments, giveaways and competitions.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon"><i class="fa-solid fa-heart"></i></div>
+      <h3>Support Development</h3>
+      <p>Every purchase helps us improve the server even more.</p>
+    </div>
+  </div>
 </div>
-
-<div class="feature">
-<i class="fa-solid fa-bolt"></i>
-<h3>Weekly Updates</h3>
-<p>
-New content, fixes,
-events and exciting features.
-</p>
-</div>
-<div class="feature">
-<i class="fa-solid fa-users"></i>
-<h3>Community Events</h3>
-<p>
-Regular tournaments,
-giveaways and competitions.
-</p>
-</div>
-<div class="feature">
-<i class="fa-solid fa-heart"></i>
-<h3>Support Development</h3>
-<p>
-Every purchase helps us improve
-the server even more.
-</p>
-</div>
-</div>
-</section><br><br>
 
 <!-- ================= FOOTER ================= -->
-
 <footer>
-<h2 style="text-align: center;"> HPmcpe Network</h2>
-<p style="text-align: center;"> Premium Minecraft Experience</p>
-<br><br>
-<p class="copyright">&copy; 2026 HPmcpe - All Rights Reserved. Not affiliated with Mojang Studios.</p>
+  <div class="f-logo">HPmcpe</div>
+  <p>description-todd.gl.joinmc.link &middot; Survival Minecraft</p>
+  <p class="copyright">&copy; 2026 HPmcpe - All Rights Reserved. Not affiliated with Mojang Studios.</p>
 </footer>
+
 <!-- Supabase Client -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
