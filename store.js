@@ -178,18 +178,90 @@ document.querySelectorAll(".buy").forEach(btn => {
                     color: "#16a34a"
                 },
 
-                handler: function (response) {
-
+                handler: async function (response) {
                     console.log(
-                        "Razorpay payment response:",
+                        "Razorpay response:",
                         response
                     );
 
                     alert(
-                        "Payment successful!\n\n" +
-                        "Payment ID: " +
-                        response.razorpay_payment_id
+                        "Payment received.\n\n" +
+                        "Verifying payment..."
                     );
+
+                    // IMPORTANT:
+                    // Payment verification will be done
+                    // by Supabase Edge Function.
+                    try {
+
+                        const {
+                            data,
+                            error
+                        } = await window.supabase.functions.invoke(
+                            "verify-razorpay-payment",
+                            {
+                                body: {
+                                    razorpay_payment_id:
+                                        response.razorpay_payment_id,
+
+                                    razorpay_order_id:
+                                        response.razorpay_order_id,
+
+                                    razorpay_signature:
+                                        response.razorpay_signature
+                                }
+                            }
+                        );
+
+                        if (error) {
+
+                            console.error(
+                                "Verification error:",
+                                error
+                            );
+
+                            alert(
+                                "Payment verification failed."
+                            );
+
+                            return;
+                        }
+
+                        if (!data || !data.success) {
+
+                            console.error(
+                                "Verification response:",
+                                data
+                            );
+
+                            alert(
+                                data?.error ||
+                                "Payment could not be verified."
+                            );
+
+                            return;
+                        }
+
+                        alert(
+                            "Payment verified successfully! ✅"
+                        );
+
+                        console.log(
+                            "Verified payment:",
+                            data
+                        );
+
+                    } catch (err) {
+
+                        console.error(
+                            "Verification error:",
+                            err
+                        );
+
+                        alert(
+                            "Unable to verify payment."
+                        );
+                    }
                 },
 
                 modal: {
