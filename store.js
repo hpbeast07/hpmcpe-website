@@ -84,11 +84,151 @@ if (loginBtn) {
 // ---------- Buy Buttons ----------
 document.querySelectorAll(".buy").forEach(btn => {
 
-    btn.addEventListener("click", function (e) {
+    btn.addEventListener("click", async function (e) {
 
         e.preventDefault();
 
-        alert("Payment system coming soon!");
+        // Login required
+        if (!currentSession) {
+            alert("Please login first.");
+            return;
+        }
+
+        const productId = btn.dataset.product;
+
+        if (!productId) {
+            alert("Product ID is missing.");
+            console.error("Missing data-product on button:", btn);
+            return;
+        }
+
+        const originalText = btn.textContent;
+
+        try {
+
+            // Prevent double-click
+            btn.disabled = true;
+            btn.textContent = "Creating Order...";
+
+            // Ask Supabase Edge Function to create Razorpay order
+            const {
+                data,
+                error
+            } = await window.supabase.functions.invoke(
+                "create-razorpay-order",
+                {
+                    body: {
+                        product_id: productId
+                    }
+                }
+            );
+
+            if (error) {
+                console.error(
+                    "Create order error:",
+                    error
+                );
+
+                alert(
+                    "Unable to create payment order."
+                );
+
+                return;
+            }
+
+            if (!data || !data.success) {
+
+                console.error(
+                    "Server response:",
+                    data
+                );
+
+                alert(
+                    data?.error ||
+                    "Unable to create payment order."
+                );
+
+                return;
+            }
+
+            // -----------------------------------------
+            // Razorpay Checkout
+            // -----------------------------------------
+
+            const options = {
+
+                key: data.key_id,
+
+                amount: data.amount,
+
+                currency: data.currency,
+
+                name: "HPmcpe",
+
+                description: data.product_name,
+
+                order_id: data.order_id,
+
+                prefill: {
+                    name: data.ign,
+                    email: currentSession.user.email || ""
+                },
+
+                theme: {
+                    color: "#16a34a"
+                },
+
+                handler: function (response) {
+
+                    console.log(
+                        "Razorpay payment response:",
+                        response
+                    );
+
+                    alert(
+                        "Payment successful!\n\n" +
+                        "Payment ID: " +
+                        response.razorpay_payment_id
+                    );
+                },
+
+                modal: {
+
+                    ondismiss: function () {
+
+                        console.log(
+                            "Razorpay checkout closed."
+                        );
+
+                    }
+
+                }
+
+            };
+
+            const razorpay =
+                new Razorpay(options);
+
+            razorpay.open();
+
+        } catch (error) {
+
+            console.error(
+                "Payment error:",
+                error
+            );
+
+            alert(
+                "Something went wrong while opening payment."
+            );
+
+        } finally {
+
+            btn.disabled = false;
+            btn.textContent = originalText;
+
+        }
+
     });
 
 });
