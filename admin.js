@@ -122,7 +122,7 @@ async function loadAdminDashboard() {
     purchases.forEach(purchase => {
 
         const amount =
-            Number(purchase.amount) / 100;
+            Number(purchase.amount);
 
         const row =
             document.createElement("tr");
