@@ -345,7 +345,7 @@ function enterMain(ign, isNew) {
 
 // ==================== COPY IP ETC ====================
 function copyIP(element) {
-  navigator.clipboard.writeText("description-todd.gl.joinmc.link");
+  navigator.clipboard.writeText("katherine-counselors.tun.ply.gg");
   const tip = element.querySelector(".ip-tip");
   if (tip) {
     tip.style.opacity = "1";
@@ -353,13 +353,13 @@ function copyIP(element) {
   }
 }
 function miniCopy(element) {
-  navigator.clipboard.writeText("description-todd.gl.joinmc.link");
+  navigator.clipboard.writeText("katherine-counselors.tun.ply.gg");
   const original = element.textContent;
   element.textContent = "Copied!";
   setTimeout(() => (element.textContent = original), 2000);
 }
 async function updateServerStatus() {
-  const ip = "description-todd.gl.joinmc.link";
+  const ip = "katherine-counselors.tun.ply.gg";
   try {
     const [javaRes, bedrockRes] = await Promise.all([
       fetch(`https://api.mcstatus.io/v2/status/java/${ip}`),
@@ -386,7 +386,10 @@ async function updateServerStatus() {
 }
 
 // ==================== INIT ====================
-restoreSession();
+restoreSession().then(() => {
+    checkAdminButton();
+});
+
 updateServerStatus();
 setInterval(updateServerStatus, 30000);
 
@@ -488,5 +491,3 @@ async function checkAdminButton() {
         adminBtn.style.display = "inline-block";
     }
 }
-
-checkAdminButton();
