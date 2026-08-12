@@ -211,6 +211,8 @@ document.querySelectorAll(".buy").forEach(btn => {
                                         response.razorpay_signature,
 
                                     product_id: productId
+
+                                    user_id: currentSession.user.id
                                 }
                             }
                         );
