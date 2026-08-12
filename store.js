@@ -208,11 +208,7 @@ document.querySelectorAll(".buy").forEach(btn => {
                                         response.razorpay_order_id,
 
                                     razorpay_signature:
-                                        response.razorpay_signature,
-
-                                    product_id: productId
-
-                                    
+                                        response.razorpay_signature
                                 }
                             }
                         );
