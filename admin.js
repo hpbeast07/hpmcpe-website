@@ -1,7 +1,7 @@
 const SUPABASE_URL = "https://wbzvnsxoxubcsctzkxcc.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndienZuc3hveHViY3NjdHpreGNjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4MjEwNzMsImV4cCI6MjA5MjM5NzA3M30.UXQOsqZg0vTtIJ_Bqqmqg-BfLomTf7PYulKXZPNZkjg";
 
-const supabase = window.supabase.createClient(
+const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_ANON_KEY
 );
@@ -18,12 +18,15 @@ async function loadAdminDashboard() {
         data: {
             session
         }
-    } = await supabase.auth.getSession();
+    } = await supabaseClient.auth.getSession();
 
     if (!session) {
+
         loading.style.display = "none";
+
         denied.textContent = "❌ Please login first.";
         denied.style.display = "block";
+
         return;
     }
 
@@ -31,15 +34,25 @@ async function loadAdminDashboard() {
     const {
         data: profile,
         error: profileError
-    } = await supabase
+    } = await supabaseClient
         .from("profiles")
         .select("role, ign")
         .eq("id", session.user.id)
         .single();
 
-    if (profileError || !profile || profile.role !== "admin") {
+    if (
+        profileError ||
+        !profile ||
+        profile.role !== "admin"
+    ) {
+
+        console.error(
+            "Admin check error:",
+            profileError
+        );
 
         loading.style.display = "none";
+
         denied.textContent = "❌ Access Denied";
         denied.style.display = "block";
 
@@ -54,7 +67,7 @@ async function loadAdminDashboard() {
     const {
         data: purchases,
         error
-    } = await supabase
+    } = await supabaseClient
         .from("purchases")
         .select(`
             id,
@@ -72,7 +85,10 @@ async function loadAdminDashboard() {
 
     if (error) {
 
-        console.error("Orders error:", error);
+        console.error(
+            "Orders error:",
+            error
+        );
 
         orders.innerHTML = `
             <tr>
@@ -85,7 +101,10 @@ async function loadAdminDashboard() {
         return;
     }
 
-    if (!purchases || purchases.length === 0) {
+    if (
+        !purchases ||
+        purchases.length === 0
+    ) {
 
         orders.innerHTML = `
             <tr>
@@ -105,10 +124,13 @@ async function loadAdminDashboard() {
         const amount =
             Number(purchase.amount) / 100;
 
-        const row = document.createElement("tr");
+        const row =
+            document.createElement("tr");
 
         row.innerHTML = `
-            <td>${purchase.product_name}</td>
+            <td>
+                ${purchase.product_name}
+            </td>
 
             <td>
                 ₹${amount.toFixed(2)}
