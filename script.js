@@ -438,3 +438,44 @@ if (urlParams.get("home") === "1") {
         main.classList.add("in");
     }
 }
+
+async function checkAdminButton() {
+
+    const adminBtn =
+        document.getElementById("adminPanelBtn");
+
+    if (!adminBtn) return;
+
+    adminBtn.style.display = "none";
+
+    const {
+        data: {
+            session
+        }
+    } = await window.supabase.auth.getSession();
+
+    if (!session) return;
+
+    const {
+        data: profile,
+        error
+    } = await window.supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", session.user.id)
+        .single();
+
+    if (error) {
+        console.error(
+            "Admin check error:",
+            error
+        );
+        return;
+    }
+
+    if (profile?.role === "admin") {
+        adminBtn.style.display =
+            "inline-block";
+    }
+    
+}checkAdminButton();
