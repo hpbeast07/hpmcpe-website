@@ -439,43 +439,54 @@ if (urlParams.get("home") === "1") {
     }
 }
 
+// ==================== ADMIN PANEL ====================
+
 async function checkAdminButton() {
 
-    const adminBtn =
-        document.getElementById("adminPanelBtn");
+    const adminBtn = document.getElementById("adminPanelBtn");
 
-    if (!adminBtn) return;
+    if (!adminBtn) {
+        console.log("Admin button not found");
+        return;
+    }
 
+    // Hide by default
     adminBtn.style.display = "none";
 
     const {
-        data: {
-            session
-        }
+        data: { session },
+        error: sessionError
     } = await window.supabase.auth.getSession();
 
-    if (!session) return;
+    if (sessionError) {
+        console.error("Session error:", sessionError);
+        return;
+    }
+
+    if (!session) {
+        console.log("No logged-in user");
+        return;
+    }
 
     const {
         data: profile,
-        error
+        error: profileError
     } = await window.supabase
         .from("profiles")
         .select("role")
         .eq("id", session.user.id)
         .single();
 
-    if (error) {
-        console.error(
-            "Admin check error:",
-            error
-        );
+    if (profileError) {
+        console.error("Admin role error:", profileError);
         return;
     }
 
-    if (profile?.role === "admin") {
-        adminBtn.style.display =
-            "inline-block";
+    console.log("Logged-in role:", profile.role);
+
+    if (profile.role === "admin") {
+        adminBtn.style.display = "inline-block";
     }
-    
-}checkAdminButton();
+}
+
+checkAdminButton();
