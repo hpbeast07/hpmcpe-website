@@ -212,7 +212,7 @@ document.querySelectorAll(".buy").forEach(btn => {
 
                                     product_id: productId
 
-                                    user_id: currentSession.user.id
+                                    
                                 }
                             }
                         );
