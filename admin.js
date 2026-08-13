@@ -6,12 +6,76 @@ const supabaseClient = window.supabase.createClient(
     SUPABASE_ANON_KEY
 );
 
+// ---------- Logout ----------
+async function doLogout() {
+    await supabaseClient.auth.signOut();
+    window.location.href = "index.html";
+}
+
+const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
+    logoutBtn.addEventListener("click", doLogout);
+}
+
+// ---------- Status badge helper ----------
+function statusBadge(status) {
+
+    const raw = (status || "").toString();
+    const s = raw.toLowerCase();
+
+    let cls = "badge-other";
+
+    if (s === "paid" || s === "captured" || s === "success") {
+        cls = "badge-paid";
+    } else if (s === "pending" || s === "created") {
+        cls = "badge-pending";
+    } else if (s === "failed" || s === "cancelled" || s === "canceled") {
+        cls = "badge-failed";
+    }
+
+    return `<span class="badge-status ${cls}">${raw || "Unknown"}</span>`;
+}
+
+// ---------- Stats ----------
+function renderStats(purchases) {
+
+    const statTotal = document.getElementById("statTotal");
+    const statRevenue = document.getElementById("statRevenue");
+    const statPaid = document.getElementById("statPaid");
+
+    const total = purchases.length;
+
+    let revenue = 0;
+    let paidCount = 0;
+
+    purchases.forEach(purchase => {
+
+        const s = (purchase.status || "").toString().toLowerCase();
+        const isPaid = s === "paid" || s === "captured" || s === "success";
+
+        if (isPaid) {
+            revenue += Number(purchase.amount) / 100;
+            paidCount++;
+        }
+    });
+
+    if (statTotal) statTotal.textContent = total;
+    if (statRevenue) statRevenue.textContent = `₹${revenue.toFixed(2)}`;
+    if (statPaid) statPaid.textContent = paidCount;
+}
+
 async function loadAdminDashboard() {
 
     const loading = document.getElementById("loading");
     const denied = document.getElementById("denied");
+    const deniedText = document.getElementById("deniedText");
     const dashboard = document.getElementById("dashboard");
     const orders = document.getElementById("orders");
+    const navIgn = document.getElementById("navIgn");
+
+    loading.style.display = "block";
+    denied.style.display = "none";
+    dashboard.style.display = "none";
 
     // Check login
     const {
@@ -24,7 +88,7 @@ async function loadAdminDashboard() {
 
         loading.style.display = "none";
 
-        denied.textContent = "❌ Please login first.";
+        if (deniedText) deniedText.textContent = "Please login first.";
         denied.style.display = "block";
 
         return;
@@ -53,7 +117,7 @@ async function loadAdminDashboard() {
 
         loading.style.display = "none";
 
-        denied.textContent = "❌ Access Denied";
+        if (deniedText) deniedText.textContent = "Access Denied";
         denied.style.display = "block";
 
         return;
@@ -62,6 +126,10 @@ async function loadAdminDashboard() {
     // Admin confirmed
     loading.style.display = "none";
     dashboard.style.display = "block";
+
+    if (navIgn && profile.ign) {
+        navIgn.textContent = profile.ign;
+    }
 
     // Load purchases
     const {
@@ -92,7 +160,7 @@ async function loadAdminDashboard() {
 
         orders.innerHTML = `
             <tr>
-                <td colspan="6" class="error">
+                <td colspan="6" class="error-row">
                     Failed to load orders.
                 </td>
             </tr>
@@ -106,9 +174,11 @@ async function loadAdminDashboard() {
         purchases.length === 0
     ) {
 
+        renderStats([]);
+
         orders.innerHTML = `
             <tr>
-                <td colspan="6">
+                <td colspan="6" class="empty-row">
                     No purchases found.
                 </td>
             </tr>
@@ -116,6 +186,8 @@ async function loadAdminDashboard() {
 
         return;
     }
+
+    renderStats(purchases);
 
     orders.innerHTML = "";
 
@@ -136,28 +208,33 @@ async function loadAdminDashboard() {
                 ₹${amount.toFixed(2)}
             </td>
 
-            <td class="paid">
-                ${purchase.status}
+            <td>
+                ${statusBadge(purchase.status)}
+            </td>
+
+            <td class="mono">
+                ${purchase.razorpay_payment_id || "—"}
+            </td>
+
+            <td class="mono">
+                ${purchase.razorpay_order_id || "—"}
             </td>
 
             <td>
-                ${purchase.razorpay_payment_id}
-            </td>
-
-            <td>
-                ${purchase.razorpay_order_id}
-            </td>
-
-            <td>
-                ${new Date(
+                ${purchase.paid_at ? new Date(
                     purchase.paid_at
-                ).toLocaleString("en-IN")}
+                ).toLocaleString("en-IN") : "—"}
             </td>
         `;
 
         orders.appendChild(row);
 
     });
+}
+
+const refreshBtn = document.getElementById("refreshBtn");
+if (refreshBtn) {
+    refreshBtn.addEventListener("click", loadAdminDashboard);
 }
 
 loadAdminDashboard();

@@ -379,7 +379,10 @@ body {
 .hb span { color: var(--green); }
 .hd  { font-size: 16px; color: var(--muted); max-width: 480px; line-height: 1.9; margin-bottom: 2rem; font-weight: 300; font-family: 'Outfit', sans-serif; }
 
-/* IP pill */
+/* IP pill stack (Java + Bedrock) */
+.ip-stack {
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
 .ip-pill {
   display: inline-flex; align-items: center; gap: 10px;
   background: rgba(8,15,30,.65); backdrop-filter: blur(10px);
@@ -387,6 +390,12 @@ body {
   padding: 10px 20px; cursor: pointer; transition: all .2s; position: relative;
 }
 .ip-pill:hover { border-color: var(--green); background: rgba(8,15,30,.85); }
+.ip-tag {
+  font-family: 'Outfit', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: var(--sky);
+  background: var(--green); border-radius: 100px; padding: 3px 9px;
+  flex-shrink: 0;
+}
 .ipl { font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 600; color: var(--green); letter-spacing: .5px; }
 .ipc { font-size: 12px; color: rgba(255,255,255,.38); font-weight: 500; }
 .ip-tip {
@@ -456,6 +465,13 @@ body {
   cursor: pointer; word-break: break-all; transition: background .2s; letter-spacing: .3px;
 }
 .mini-ip:hover { background: rgba(74,222,128,.08); }
+.mini-ip-group { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: .75rem; }
+.mini-ip-group .mini-ip { margin-top: 0; }
+.mini-ip-tag {
+  font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--sky); background: var(--green); border-radius: 4px;
+  padding: 2px 6px; flex-shrink: 0;
+}
 
 /* Rules */
 .rules-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 1rem; }

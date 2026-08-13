@@ -344,19 +344,19 @@ function enterMain(ign, isNew) {
 }
 
 // ==================== COPY IP ETC ====================
-function copyIP(element) {
-  navigator.clipboard.writeText("katherine-counselors.tun.ply.gg");
+function copyIP(element, ip) {
+  navigator.clipboard.writeText(ip || "katherine-counselors.tun.ply.gg");
   const tip = element.querySelector(".ip-tip");
   if (tip) {
     tip.style.opacity = "1";
     setTimeout(() => (tip.style.opacity = "0"), 2000);
   }
 }
-function miniCopy(element) {
-  navigator.clipboard.writeText("katherine-counselors.tun.ply.gg");
-  const original = element.textContent;
+function miniCopy(element, ip) {
+  navigator.clipboard.writeText(ip || "katherine-counselors.tun.ply.gg");
+  const original = element.innerHTML;
   element.textContent = "Copied!";
-  setTimeout(() => (element.textContent = original), 2000);
+  setTimeout(() => (element.innerHTML = original), 2000);
 }
 async function updateServerStatus() {
   const ip = "katherine-counselors.tun.ply.gg";

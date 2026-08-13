@@ -6,92 +6,97 @@
     <link rel="icon" href=".\images\HPmcpe-logo.png" type="image/x-icon">
 
     <title>HPmcpe Admin</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#16a34a">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-    <style>
-        body {
-            margin: 0;
-            padding: 30px;
-            font-family: Arial, sans-serif;
-            background: #0f1115;
-            color: white;
-        }
-
-        h1 {
-            margin-bottom: 25px;
-        }
-
-        #loading {
-            color: #aaa;
-        }
-
-        #denied {
-            display: none;
-            color: #ff5555;
-            font-size: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #181b22;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        th, td {
-            padding: 14px;
-            text-align: left;
-            border-bottom: 1px solid #292d36;
-        }
-
-        th {
-            background: #20242d;
-        }
-
-        .paid {
-            color: #22c55e;
-            font-weight: bold;
-        }
-
-        .error {
-            color: #ef4444;
-        }
-    </style>
 </head>
 
 <body>
 
-    <h1>🛠️ HPmcpe Admin Dashboard</h1>
+    <!-- ================= NAVBAR ================= -->
+    <nav class="main-nav">
+        <div class="nav-logo">HPmcpe</div>
+        <div class="nav-right">
+            <a href="index.html?home=1">Home</a>
+            <a href="store.html">Store</a>
+            <div class="nav-ign"><span class="nav-dot"></span><span id="navIgn">Admin</span></div>
+            <button class="logout-btn" id="logoutBtn">Logout</button>
+        </div>
+    </nav>
 
-    <div id="loading">
-        Checking admin access...
+    <!-- ================= HERO ================= -->
+    <header class="admin-hero">
+        <div class="sec-tag">Control Center</div>
+        <h1 class="admin-title">🛠️ Admin Dashboard</h1>
+        <p class="admin-sub">Monitor store orders, revenue and payment status in real time.</p>
+    </header>
+
+    <!-- ================= LOADING ================= -->
+    <div id="loading" class="state-card">
+        <div class="spinner"></div>
+        <p>Checking admin access...</p>
     </div>
 
-    <div id="denied">
-        ❌ Access Denied
+    <!-- ================= DENIED ================= -->
+    <div id="denied" class="state-card denied-card" style="display:none;">
+        <div class="denied-icon">⛔</div>
+        <p id="deniedText">Access Denied</p>
+        <a href="index.html" class="back-home-btn">Back to Home</a>
     </div>
 
-    <div id="dashboard" style="display:none;">
+    <!-- ================= DASHBOARD ================= -->
+    <div id="dashboard" class="dashboard" style="display:none;">
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Product</th>
-                    <th>Amount</th>
-                    <th>Status</th>
-                    <th>Payment ID</th>
-                    <th>Order ID</th>
-                    <th>Paid At</th>
-                </tr>
-            </thead>
+        <div class="stats-row">
+            <div class="stat-card">
+                <span class="stat-value" id="statTotal">0</span>
+                <span class="stat-label">Total Orders</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="statRevenue">₹0</span>
+                <span class="stat-label">Revenue</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-value" id="statPaid">0</span>
+                <span class="stat-label">Paid Orders</span>
+            </div>
+        </div>
 
-            <tbody id="orders">
-            </tbody>
-        </table>
+        <div class="table-card">
+            <div class="table-card-head">
+                <h2>Recent Orders</h2>
+                <button class="refresh-btn" id="refreshBtn">⟳ Refresh</button>
+            </div>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Payment ID</th>
+                            <th>Order ID</th>
+                            <th>Paid At</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="orders">
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
     </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="f-logo">HPmcpe</div>
+        <p class="copyright">&copy; 2026 HPmcpe - All Rights Reserved. Admin Panel.</p>
+    </footer>
 
     <script type="module" src="admin.js"></script>
 
